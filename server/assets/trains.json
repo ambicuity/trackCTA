@@ -1,0 +1,124 @@
+[
+    {
+        "name": "Red (Howard-95th/Dan Ryan)",
+        "route": "red",
+        "color": "#c60c30",
+        "routes": [
+            {
+                "direction": "1",
+                "destination": "Howard"
+            },
+            {
+                "direction": "5",
+                "destination": "95th/Dan Ryan"
+            }
+        ]
+    },
+    {
+        "name": "Blue (O'Hare-Forest Park)",
+        "route": "blue",
+        "color": "#00a1de",
+        "routes": [
+            {
+                "direction": "1",
+                "destination": "O'Hare"
+            },
+            {
+                "direction": "5",
+                "destination": "Forest Park"
+            }
+        ]
+    },
+    {
+        "name": "Brown (Kimball-Loop)",
+        "route": "brn",
+        "color": "#62361b",
+        "routes": [
+            {
+                "direction": "1",
+                "destination": "Kimball"
+            },
+            {
+                "direction": "5",
+                "destination": "Loop"
+            }
+        ]
+    },
+    {
+        "name": "Green (Harlem/Lake-Ashland/63rd-Cottage Grove)",
+        "route": "g",
+        "color": "#009b3a",
+        "routes": [
+            {
+                
+                "direction": "1",
+                "destination": "Harlem/Lake"
+            },
+            {
+  
+                "direction": "5",
+                "destination": "Ashland/63rd-Cottage"
+            }
+        ]
+    },
+    {
+        "name": "Orange (Midway-Loop)",
+        "route": "org",
+        "color": "#f9461c",
+        "routes": [
+            {
+                "direction": "1",
+                "destination": "Loop"
+            },
+            {
+                "direction": "5",
+                "destination": "Midway"
+            }
+        ]
+    },
+    {
+        "name": "Purple (Linden-Howard)",
+        "route": "p",
+        "color": "#522398",
+        "routes": [
+            {
+                "direction": "1",
+                "destination": "Linden"
+            },
+            {
+                "direction": "5",
+                "destination": "Howard"
+            }
+        ]
+    },
+    {
+        "name": "Pink (54th/Cermak-Loop)",
+        "route": "pink",
+        "color": "#e27ea6",
+        "routes": [
+            {
+                "direction": "1",
+                "destination": "Loop"
+            },
+            {
+                "direction": "5",
+                "destination": "54th/Cermak"
+            }
+        ]
+    },
+    {
+        "name": "Yellow (Skokie-Howard)",
+        "route": "y",
+        "color": "#f9e300",
+        "routes": [
+            {
+                "direction": "1",
+                "destination": "Skokie"
+            },
+            {
+                "direction": "5",
+                "destination": "Howard"
+            }
+        ]
+    }
+]

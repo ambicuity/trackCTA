@@ -1,0 +1,26 @@
+{
+    "name": "stops-builder",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js",
+        "start:all": "./start.sh && npm start",
+        "start:stops": "./start.sh && npm start -- stops",
+        "start:trips": "./start.sh && npm start -- trips",
+        "start:shapes": "./start.sh && npm start -- shapes",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    },
+    "dependencies": {
+        "axios": "^0.25.0",
+        "cli-progress": "^3.10.0",
+        "csvtojson": "^2.0.10",
+        "dotenv": "^14.3.0",
+        "mongoose": "^6.1.8"
+    }
+}

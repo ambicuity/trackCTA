@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import "~slick-carousel/slick/slick.scss"; 
+@import "~slick-carousel/slick/slick-theme.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html,
+#root {
+  height: 100% !important;
+  width: 100% !important;
+  font-family: "Inter", sans-serif !important;
+}

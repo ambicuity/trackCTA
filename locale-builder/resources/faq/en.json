@@ -1,0 +1,18 @@
+{
+    "Q1": "Is the data live?",
+    "A1": "Yes it is live. The data is retrieved from CTA servers. Although, there is a delay of about 3s.",
+    "Q2": "Why can't I see the bus stops?",
+    "A2": "Depending on your level of zoom on the map, the bus stops are hidden. Please zoom into the map a couple of times to see the stop. Also make sure you have a route(s) selected.",
+    "Q3": "Can I get arrival info at my stop?",
+    "A3": "Yes you can. Tap on any stop, and if the data is available, it should pop up with the arrival times of the busses coming to that stop.",
+    "Q4": "Does the app show delayed busses?",
+    "A4": "Yes. If the bus is delayed, there will be an indication in the arrival info when you tap on a stop.",
+    "Q5": "'No data found for the parameter'. What does that mean?",
+    "A5": "If you get this error, it means that the CTA servers did not have any data for what you requested for.",
+    "Q6": "Is this available in different languages?",
+    "A6": "Yes. Currently supported in English, Espanol and Chinese",
+    "Q7": "Can't find your bus?",
+    "A7": "We're sorry that you can't find you bus, as its probably not available from the CTA server.",
+    "Q8": "Can't find what you're looking for?",
+    "A8": "No worries! You can mail us at hrishikeshpaul12@gmail.com about your queries."
+}

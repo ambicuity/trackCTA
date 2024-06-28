@@ -1,0 +1,8 @@
+{
+  "name": "locale-builder",
+  "version": "1.0.0",
+  "dependencies": {
+    "@google-cloud/translate": "^6.3.1",
+    "dotenv": "^10.0.0"
+  }
+}

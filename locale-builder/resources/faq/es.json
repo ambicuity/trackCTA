@@ -1,0 +1,18 @@
+{
+  "Q1": "¿Están los datos en vivo?",
+  "A1": "Sí, es en vivo. Los datos se recuperan de los servidores de CTA. Aunque, hay un retraso de unos 3s.",
+  "Q2": "¿Por qué no puedo ver las paradas de autobús?",
+  "A2": "Dependiendo de su nivel de zoom en el mapa, las paradas de autobús están ocultas. Haga zoom en el mapa un par de veces para ver la parada. También asegúrese de tener una(s) ruta(s) seleccionada(s).",
+  "Q3": "¿Puedo obtener información de llegada en mi parada?",
+  "A3": "Sí tu puedes. Toque cualquier parada y, si los datos están disponibles, debería aparecer con los tiempos de llegada de los autobuses que llegan a esa parada.",
+  "Q4": "¿La aplicación muestra autobuses retrasados?",
+  "A4": "Si. Si el autobús se retrasa, habrá una indicación en la información de llegada cuando toque una parada.",
+  "Q5": "'No se encontraron datos para el parámetro'. ¿Qué significa eso?",
+  "A5": "Si recibe este error, significa que los servidores de CTA no tenían ningún dato para lo que solicitó.",
+  "Q6": "¿Está disponible en diferentes idiomas?",
+  "A6": "Si. Actualmente soportado en inglés, español y chino",
+  "Q7": "¿No encuentras tu autobús?",
+  "A7": "Lamentamos que no pueda encontrar su autobús, ya que probablemente no esté disponible en el servidor de CTA.",
+  "Q8": "¿No encuentras lo que buscas?",
+  "A8": "¡No hay problema! Puede enviarnos un correo electrónico a hrishikeshpaul12@gmail.com sobre sus consultas."
+}
