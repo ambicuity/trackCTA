@@ -27,7 +27,7 @@ router.get('/routes', async (req, res) => {
 
         res.send(data);
     } catch (err) {
-        res.send(err).status(400);
+        res.status(400).send(err);
     }
 });
 
@@ -48,7 +48,7 @@ router.get('/route-color', async (req, res) => {
         res.send(routeToColors);
     } catch (err) {
         console.log(err);
-        res.send(err).status(400);
+        res.status(400).send(err);
     }
 });
 
@@ -84,7 +84,7 @@ router.get('/patterns', async (req, res) => {
 
         res.send(patterns);
     } catch (err) {
-        res.send(err).status(400);
+        res.status(400).send(err);
     }
 });
 
@@ -96,7 +96,7 @@ router.get('/stops', async (req, res) => {
 
         res.send(data);
     } catch (err) {
-        res.send(err).status(400);
+        res.status(400).send(err);
     }
 });
 
@@ -142,7 +142,7 @@ router.get('/predictions', async (req, res) => {
 
         res.send(data);
     } catch (err) {
-        res.send(err).status(400);
+        res.status(400).send(err);
     }
 });
 
