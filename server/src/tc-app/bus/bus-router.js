@@ -77,7 +77,7 @@ router.get('/route-color', async (req, res) => {
         res.send(routeToColors);
     } catch (err) {
         console.log(err);
-        res.send(err).status(400);
+        res.status(400).send(err);
     }
 });
 
