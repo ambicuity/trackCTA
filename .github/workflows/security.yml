@@ -1,0 +1,81 @@
+name: Security Audit
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  security-audit:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+        
+    - name: Install dependencies and audit server
+      run: |
+        cd server
+        npm install
+        npm audit --audit-level=moderate
+        
+    - name: Install dependencies and audit client
+      run: |
+        cd client
+        npm install --legacy-peer-deps
+        npm audit --audit-level=moderate
+        
+    - name: Install dependencies and audit data-store
+      run: |
+        cd data-store
+        npm install
+        npm audit --audit-level=moderate
+        
+    - name: Install dependencies and audit locale-builder
+      run: |
+        cd locale-builder
+        npm install
+        npm audit --audit-level=moderate
+        
+    - name: Generate security report
+      run: |
+        echo "# Security Audit Report" > security-report.md
+        echo "Generated on: $(date)" >> security-report.md
+        echo "" >> security-report.md
+        
+        echo "## Server Dependencies" >> security-report.md
+        cd server && npm audit --json >> ../server-audit.json || true
+        cd ..
+        
+        echo "## Client Dependencies" >> security-report.md
+        cd client && npm audit --json >> ../client-audit.json || true
+        cd ..
+        
+        echo "## Data Store Dependencies" >> security-report.md
+        cd data-store && npm audit --json >> ../datastore-audit.json || true
+        cd ..
+        
+        echo "## Locale Builder Dependencies" >> security-report.md
+        cd locale-builder && npm audit --json >> ../locale-audit.json || true
+        cd ..
+        
+    - name: Upload security report
+      uses: actions/upload-artifact@v4
+      with:
+        name: security-audit-report
+        path: |
+          security-report.md
+          server-audit.json
+          client-audit.json
+          datastore-audit.json
+          locale-audit.json
