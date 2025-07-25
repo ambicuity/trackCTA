@@ -1,24 +1,20 @@
-import axios from 'axios';
-import { getLocaleJson, sendMessage } from './Service';
+import axios, { AxiosResponse } from 'axios';
 
-// Mock axios
+// Mock axios completely
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-// Create mock Http instance
+// Create mock Http instance with proper typing
 const mockHttp = {
   get: jest.fn(),
   post: jest.fn()
-};
+} as any;
 
-// Mock the Http export
-jest.mock('./Service', () => {
-  const originalModule = jest.requireActual('./Service');
-  return {
-    ...originalModule,
-    Http: mockHttp
-  };
-});
+// Mock axios.create to return our mock instance
+mockedAxios.create = jest.fn(() => mockHttp as any);
+
+// Import after mocking
+const { getLocaleJson, sendMessage } = require('./Service');
 
 describe('Service Utils', () => {
   beforeEach(() => {

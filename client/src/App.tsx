@@ -16,7 +16,7 @@ export const App: FC = () => {
             
             {loading ? (
                 <Center h="100%" w="100%">
-                    <Spinner color="blue.400" size="lg" />
+                    <Spinner color="blue.400" size="lg" role="status" />
                 </Center>
             ) : (
                 <Suspense fallback={null}>

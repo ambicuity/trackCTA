@@ -155,10 +155,10 @@ jobs:
     - name: Run security scans
       run: |
         # Check for security vulnerabilities across all packages
-        cd server && npm audit --audit-level=high --production || echo "Server has vulnerabilities"
-        cd ../data-store && npm audit --audit-level=high --production || echo "Data-store has vulnerabilities"
-        cd ../locale-builder && npm audit --audit-level=high --production || echo "Locale-builder has vulnerabilities"
-        cd ../client && npm audit --audit-level=high --production || echo "Client has vulnerabilities"
+        cd server && npm audit --audit-level=moderate --production || echo "Server has vulnerabilities"
+        cd ../data-store && npm audit --audit-level=moderate --production || echo "Data-store has vulnerabilities"
+        cd ../locale-builder && npm audit --audit-level=moderate --production || echo "Locale-builder has vulnerabilities"
+        cd ../client && npm audit --audit-level=moderate --production || echo "Client has vulnerabilities"
 
   # Integration Tests
   integration-tests:
