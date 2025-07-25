@@ -9,7 +9,7 @@
         "start:stops": "./start.sh && npm start -- stops",
         "start:trips": "./start.sh && npm start -- trips",
         "start:shapes": "./start.sh && npm start -- shapes",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Warning: No tests specified for data-store\""
     },
     "author": "",
     "license": "ISC",

@@ -1,6 +1,9 @@
 {
   "name": "locale-builder",
   "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Warning: No tests specified for locale-builder\""
+  },
   "dependencies": {
     "@google-cloud/translate": "^9.2.0",
     "dotenv": "^10.0.0"

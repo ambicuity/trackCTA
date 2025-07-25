@@ -9,7 +9,8 @@ jest.mock('locale/LocaleProvider', () => ({
     const { useEffect } = require('react');
     useEffect(() => {
       // Simulate loading completion after a short delay
-      setTimeout(() => setSystemLoading(false), 100);
+      const timeout = setTimeout(() => setSystemLoading(false), 100);
+      return () => clearTimeout(timeout);
     }, [setSystemLoading]);
     return null;
   }
