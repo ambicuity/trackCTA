@@ -1,0 +1,203 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  # Test Server API
+  server-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        
+    - name: Install server dependencies
+      run: |
+        cd server
+        npm install
+        
+    - name: Run server tests
+      run: |
+        cd server
+        npm test
+        
+    - name: Run server security audit
+      run: |
+        cd server
+        npm audit --audit-level=moderate
+
+  # Test Client App
+  client-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        
+    - name: Install client dependencies
+      run: |
+        cd client
+        npm install --legacy-peer-deps
+        
+    - name: Run client tests
+      run: |
+        cd client
+        npm test -- --coverage --watchAll=false --passWithNoTests
+        
+    - name: Build client
+      run: |
+        cd client
+        npm run build
+        
+    - name: Upload client build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: client-build-${{ matrix.node-version }}
+        path: client/build
+
+  # Test Data Store
+  data-store-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        
+    - name: Install data-store dependencies
+      run: |
+        cd data-store
+        npm install
+        
+    - name: Run data-store security audit
+      run: |
+        cd data-store
+        npm audit --audit-level=moderate
+
+  # Test Locale Builder
+  locale-builder-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        
+    - name: Install locale-builder dependencies
+      run: |
+        cd locale-builder
+        npm install
+        
+    - name: Run locale-builder security audit
+      run: |
+        cd locale-builder
+        npm audit --audit-level=moderate
+
+  # Code Quality and Security
+  code-quality:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: |
+        cd server && npm install
+        cd ../client && npm install --legacy-peer-deps
+        cd ../data-store && npm install
+        cd ../locale-builder && npm install
+        
+    - name: Run security scans
+      run: |
+        # Check for security vulnerabilities across all packages
+        cd server && npm audit --audit-level=high --production || echo "Server has vulnerabilities"
+        cd ../data-store && npm audit --audit-level=high --production || echo "Data-store has vulnerabilities"
+        cd ../locale-builder && npm audit --audit-level=high --production || echo "Locale-builder has vulnerabilities"
+        cd ../client && npm audit --audit-level=high --production || echo "Client has vulnerabilities"
+
+  # Integration Tests
+  integration-tests:
+    runs-on: ubuntu-latest
+    needs: [server-tests, client-tests, data-store-tests]
+    
+    services:
+      mongodb:
+        image: mongo:4.4
+        env:
+          MONGO_INITDB_ROOT_USERNAME: test
+          MONGO_INITDB_ROOT_PASSWORD: test
+        ports:
+          - 27017:27017
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+        
+    - name: Install all dependencies
+      run: |
+        cd server && npm install
+        cd ../client && npm install --legacy-peer-deps
+        cd ../data-store && npm install
+        
+    - name: Wait for MongoDB
+      run: |
+        timeout 60 bash -c 'until nc -z localhost 27017; do sleep 1; done'
+        
+    - name: Run integration tests
+      env:
+        MONGODB_URI: mongodb://test:test@localhost:27017/test
+        CTA_KEY: test_key
+      run: |
+        cd server
+        npm test
