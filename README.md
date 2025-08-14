@@ -6,6 +6,8 @@
 
 An internationalized web application designed to track and predict Chicago Transit Authority (CTA) buses and trains in real-time. This comprehensive platform provides accurate arrival times, route information, and notifications for delays, ensuring a smooth and efficient commuting experience for users worldwide.
 
+> **Status Indicators**: The badges above show the current status of our automated workflows - CI/CD Pipeline (testing), Security Audit (vulnerability scanning), and Deploy (automated deployment).
+
 ## 🚀 Features
 
 - **Real-time tracking** of CTA buses and trains
@@ -182,10 +184,17 @@ The project maintains comprehensive test coverage:
 
 ### Continuous Integration
 
-GitHub Actions automatically runs tests on:
-- Every pull request
-- Pushes to main/develop branches
-- Scheduled security audits
+Our comprehensive CI/CD pipeline automatically runs on every pull request and push to main/develop branches:
+
+**CI/CD Pipeline (ci.yml):**
+- **Multi-version testing**: Tests across Node.js 16.x, 18.x, and 20.x
+- **Server tests**: Unit and integration tests with MongoDB
+- **Client tests**: React component testing with coverage reports
+- **Data-store tests**: Service layer testing with security audits
+- **Locale-builder tests**: Internationalization tool testing
+- **Code quality checks**: Security scans across all components
+- **Integration tests**: Full-stack testing with MongoDB services
+- **Build artifacts**: Automated build and artifact generation
 
 ## 📊 API Documentation
 
@@ -290,6 +299,25 @@ The application supports multiple languages through i18next:
 
 ## 🚀 Deployment
 
+### Automated Deployment Pipeline
+
+Our deployment workflow (deploy.yml) provides continuous deployment:
+
+**Automated Triggers:**
+- **Staging Deployment**: Automatic deployment to staging on push to `main` branch
+- **Production Deployment**: Automatic deployment to production on version tags (v*)
+- **Pre-deployment Testing**: Automated test suite execution before deployment
+- **Artifact Generation**: Build and packaging of deployment-ready assets
+
+**Deployment Process:**
+1. **Client Build**: React app compilation and optimization
+2. **Server Preparation**: Production dependency installation
+3. **Test Validation**: Full test suite execution
+4. **Environment-based Deployment**: Staging vs. production based on trigger
+5. **Artifact Upload**: Deployment packages with excluded development files
+
+### Manual Deployment Options
+
 ### Production Deployment
 
 1. **Build the application:**
@@ -344,6 +372,18 @@ Set these environment variables in production:
 - **Environment Variables**: Sensitive data stored securely
 - **Dependency Scanning**: Automated vulnerability detection
 - **Security Headers**: Proper HTTP security headers implemented
+- **Automated Security Audits**: Daily scheduled security scans at 2 AM UTC
+- **Security Reporting**: Comprehensive audit reports with vulnerability tracking
+
+### Automated Security Pipeline
+
+Our security audit workflow (security.yml) provides:
+
+- **Daily Security Scans**: Scheduled vulnerability detection across all components
+- **Pull Request Security Checks**: Mandatory security validation before merging
+- **Multi-component Auditing**: Server, client, data-store, and locale-builder scanning
+- **Security Report Generation**: Detailed JSON reports with vulnerability summaries
+- **Artifact Upload**: Security reports stored for compliance and tracking
 
 ### Security Best Practices
 
@@ -379,10 +419,15 @@ We welcome contributions! Please follow these steps:
 
 ### Code Review Process
 
-1. Automated tests must pass
-2. Security scan must pass
-3. Code review by maintainer required
-4. Documentation updated if needed
+All contributions must pass our automated quality gates:
+
+1. **CI/CD Pipeline**: All tests must pass across Node.js 16.x, 18.x, and 20.x
+2. **Security Audit**: Dependency vulnerability scans must pass
+3. **Code Quality**: ESLint checks and security scans must pass
+4. **Integration Tests**: Full-stack tests with MongoDB must pass
+5. **Build Verification**: Client build must complete successfully
+6. **Maintainer Review**: Manual code review by project maintainer required
+7. **Documentation**: README and relevant docs updated for significant changes
 
 ## 📝 License
 
