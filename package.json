@@ -1,0 +1,52 @@
+{
+  "name": "trackcta-monorepo",
+  "version": "1.0.0",
+  "description": "Chicago Transit Authority Real-Time Tracker - Monorepo",
+  "private": true,
+  "author": "hrishikeshpaul",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.x",
+    "npm": ">=7.x"
+  },
+  "scripts": {
+    "install:client": "cd client && npm install --legacy-peer-deps",
+    "install:server": "cd server && npm install", 
+    "install:web-app": "cd web-app && npm install --legacy-peer-deps",
+    "install:data-store": "cd data-store && npm install",
+    "install:locale-builder": "cd locale-builder && npm install",
+    "install:all": "npm run install:server && npm run install:client && npm run install:web-app && npm run install:data-store && npm run install:locale-builder",
+    "test:server": "cd server && npm test",
+    "test:client": "cd client && npm test -- --coverage --watchAll=false --passWithNoTests",
+    "test": "npm run test:server",
+    "build:client": "cd client && npm run build",
+    "build:web-app": "cd web-app && npm run build",
+    "build": "npm run build:client && npm run build:web-app",
+    "start:server": "cd server && npm start",
+    "start:client": "cd client && npm start",
+    "dev:server": "cd server && npm run dev",
+    "audit:server": "cd server && npm audit --audit-level=moderate",
+    "audit:client": "cd client && npm audit --audit-level=moderate",
+    "audit:data-store": "cd data-store && npm audit --audit-level=moderate", 
+    "audit:locale-builder": "cd locale-builder && npm audit --audit-level=moderate",
+    "audit:web-app": "cd web-app && npm audit --audit-level=moderate",
+    "audit:data-store": "cd data-store && npm audit --audit-level=moderate", 
+    "audit:locale-builder": "cd locale-builder && npm audit --audit-level=moderate",
+    "audit:all": "npm run audit:server && npm run audit:client && npm run audit:web-app && npm run audit:data-store && npm run audit:locale-builder"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ambicuity/trackCTA.git"
+  },
+  "keywords": [
+    "chicago",
+    "transit",
+    "cta",
+    "real-time",
+    "tracker",
+    "react",
+    "node",
+    "express",
+    "mongodb"
+  ]
+}
