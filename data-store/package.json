@@ -9,12 +9,12 @@
         "start:stops": "./start.sh && npm start -- stops",
         "start:trips": "./start.sh && npm start -- trips",
         "start:shapes": "./start.sh && npm start -- shapes",
-        "test": "echo \"Warning: No tests specified for data-store\""
+        "test": "echo \"Warning: No tests specified for data-store\" && exit 0"
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "nodemon": "^2.0.15"
+        "nodemon": "^3.0.0"
     },
     "dependencies": {
         "axios": "^1.11.0",
